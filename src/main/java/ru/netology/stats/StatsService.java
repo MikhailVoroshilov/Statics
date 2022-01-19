@@ -11,11 +11,7 @@ public class StatsService {
     }
 
     public double avgProfitYaer(int[] month) {
-        double sum = 0;
-        for (int i : month) {
-            sum += i;
-        }
-        return sum / month.length;
+        return sumMonth(month) / month.length;
     }
 
     public int maxSalesMonth(int[] month) {
@@ -39,19 +35,14 @@ public class StatsService {
             }
             monthe = monthe + 1;
         }
-        return minMonth +1;
+        return minMonth + 1;
     }
 
     public double monthDownAvgProfitYaer(int[] month) {
-        double sum = 0;
-
         int count = 0;
-        for (int i : month) {
-            sum += i;
-        }
-        double avg = sum / month.length;
+
         for (int i = 0; i < month.length; i++) {
-            if (month[i] < avg) {
+            if (month[i] < avgProfitYaer(month)) {
                 count++;
             }
         }
@@ -59,15 +50,10 @@ public class StatsService {
     }
 
     public double monthUpAvgProfitYaer(int[] month) {
-        double sum = 0;
-
         int count = 0;
-        for (int i : month) {
-            sum += i;
-        }
-        double avg = sum / month.length;
+
         for (int i = 0; i < month.length; i++) {
-            if (month[i] >= avg) {
+            if (month[i] >= avgProfitYaer(month)) {
                 count++;
             }
         }
